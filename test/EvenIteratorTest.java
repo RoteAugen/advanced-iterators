@@ -2,7 +2,9 @@ package com.roteaugen.advIter.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 import org.junit.Test;
@@ -29,6 +31,20 @@ public class EvenIteratorTest {
 			
 		}
 		
+	}
+
+	@Test
+	public void testOne() {
+		List<Integer> testA = new ArrayList<Integer>();
+		testA.add(1);
+		List<Integer> resultA = new ArrayList<Integer>();
+		resultA.add(1);
+		
+		Iterator<Integer> testee = new EvenIterator<Integer>(testA.iterator());
+		
+		while (testee.hasNext()) {
+			assertEquals(testee.next(), resultA.iterator().next());
+		}
 	}
 
 }
