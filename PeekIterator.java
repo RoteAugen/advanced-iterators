@@ -37,9 +37,9 @@ public final class PeekIterator<E> implements Iterator<E>{
 	}
 	
 	public E peek() throws NoSuchElementException {
-		if (iter == null) throw new NoSuchElementException();
+		//if (iter == null) throw new NoSuchElementException();
 		if (!hasPeeked) {	// If no peeking has happened since last next();
-			if (!iter.hasNext()) throw new NoSuchElementException();	
+			//if (!iter.hasNext()) throw new NoSuchElementException();	
 			tempVar = iter.next();	// get the next element and reset peeked status
 			hasPeeked = true;
 		}

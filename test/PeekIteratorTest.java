@@ -21,7 +21,7 @@ public class PeekIteratorTest {
 			testee.next();
 			fail(".hasNext() did not throw exception.");
 		}
-		catch (NoSuchElementException ex) {
+		catch (NullPointerException ex) {
 			
 		}
 	}
