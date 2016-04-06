@@ -88,4 +88,72 @@ public class PeekIteratorTest {
 		// Test Case 
 	}
 
+	
+	@Test
+	public void testOnContainerOfTwo() {
+		// Test Case 3: iterator on iterator with only one element
+		List<Integer> testA = new ArrayList<Integer>();
+		testA.add(0);
+		testA.add(-1);
+		PeekIterator<Integer> testee = new PeekIterator<Integer>(testA.iterator());
+		
+		
+		// First hasNext should always succeed
+		for (int i = 0; i < 5; ++i)
+			assertTrue(testee.hasNext()); 
+		
+		// First peek should always succeed
+		try{
+			for (int i = 0; i < 5; ++i)
+				testee.peek();
+		}
+		catch (NoSuchElementException ex) {
+			fail(".peek() must not throw exception.");
+		}
+		
+		// First next should always succeed
+		try{
+			testee.next();
+		}
+		catch (NoSuchElementException ex) {
+			fail(".next() must not throw exception here.");
+		}
+
+		// Second peek should always succeed
+		try{
+			for (int i = 0; i < 5; ++i)
+				testee.peek();
+		}
+		catch (NoSuchElementException ex) {
+			fail(".peek() must not throw exception.");
+		}
+		
+		// Second next should also succeed
+		try{
+			testee.next();
+		}
+		catch (NoSuchElementException ex) {
+			fail(".next() must not throw exception here.");
+		}
+		
+		// Third next must fail 
+		try{
+			testee.next();
+			fail(".next() must throw exception here.");
+		}
+		catch (NoSuchElementException ex) {
+		}
+		
+		// Third peek must fail 
+		try{
+			testee.peek();
+			fail(".peek() must throw exception here.");
+		}
+		catch (NoSuchElementException ex) {
+		}
+		
+		// Last hasNext must fail
+		assertFalse(testee.hasNext());
+		// Test Case 
+	}
 }
